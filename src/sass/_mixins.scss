@@ -1,0 +1,12 @@
+$breakpoints: (
+  "tablet": 481px,
+  "laptop": 769px,
+  "large": 1025px,
+  "extra-large": 1201px,
+);
+
+@mixin responsive($breakpoint) {
+  @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}

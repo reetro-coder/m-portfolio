@@ -1,0 +1,17 @@
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.center {
+  display: grid;
+  place-content: center;
+}
+
+.underline {
+  text-decoration: underline;
+}
