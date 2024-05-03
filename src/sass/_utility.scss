@@ -1,3 +1,7 @@
+@use "variables";
+
+$root-size: var(--root-size);
+
 .offscreen {
   position: absolute;
   left: -9999px;
@@ -14,4 +18,21 @@
 
 .underline {
   text-decoration: underline;
+}
+
+.c-align {
+  text-align: center;
+}
+
+.title {
+  font-size: var(--title-fs);
+  font-weight: 200;
+  letter-spacing: calc($root-size * 0.2);
+  text-align: center;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $root-size;
 }

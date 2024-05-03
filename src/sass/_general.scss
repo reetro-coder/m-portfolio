@@ -1,0 +1,40 @@
+@use "variables";
+@use "placeholders";
+
+$root-size: var(--root-size);
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @extend %fill-page;
+  background: var(--bg);
+  color: var(--primary-color);
+  font-family: var(--ff);
+  font-size: var(--fs);
+}
+
+h1 {
+  color: var(--heading-color);
+  font-weight: var(--heading-font-weight);
+}
+
+button {
+  // todo: button animation
+  font: inherit;
+  background: var(--button-bg);
+  color: var(--button-color);
+  border: unset;
+  border-radius: 3px;
+  padding: calc($root-size * 0.7) calc($root-size * 1.7);
+}
+
+a:any-link {
+  text-decoration: none;
+}
+
+a,
+a:active {
+  color: inherit;
+}

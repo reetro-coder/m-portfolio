@@ -5,6 +5,8 @@ import "./index.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    {" "}
+    {/* todo: re-enable strict mode */}
     <App />
   </React.StrictMode>
 );

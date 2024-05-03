@@ -1,9 +1,110 @@
 @use "reset";
+@use "general" as *;
 @use "utility";
 @use "mixins" as *;
 
 /* BLOCKS */
 
+.hero,
+.about {
+  @extend %fill-page;
+  padding: calc($root-size * 2);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: calc($root-size * 2);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  padding: 4px;
+  border: var(--menu-border);
+  border-radius: calc($root-size * 2);
+  position: sticky;
+  top: 15px;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.detailer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__logos {
+  display: flex;
+  gap: $root-size;
+  flex-wrap: wrap;
+  place-content: center;
+}
+
 /* ELEMENTS */
+
+.hero__pp {
+  width: calc($root-size * 5);
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.hero__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: $root-size;
+  @include responsive("tablet") {
+    flex-direction: row;
+  }
+
+  & > button:first-child {
+    background: var(--special-button-bg);
+    color: var(--special-button-color);
+  }
+}
+
+.menu__a {
+  background: var(--a-bg);
+  padding: calc($root-size * 0.6) calc($root-size * 1.2);
+  border-radius: inherit;
+}
+
+.detailer__line {
+  height: 4rem;
+  width: 0.5px;
+  background: var(--detailer__line-bg);
+}
+
+.detailer__num {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  text-align: center;
+  padding: calc($root-size * 0.5);
+  background: linear-gradient(135deg, white, var(--bg));
+  color: black;
+  font-weight: 300;
+}
+
+.about__logo {
+  width: calc($root-size * 3);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: contrast(0.5);
+}
 
 /* MODIFIERS */
