@@ -46,16 +46,16 @@ export default function About() {
   ));
 
   useEffect(() => {
-    const logoImages = import.meta.glob("../assets/logos/*");
+    const logoImages = import.meta.glob("../../public/assets/logos/*");
     for (let logoImage in logoImages) {
       logoImage = logoImage.split("/").pop();
       const logoImageObject = new Image();
-      logoImageObject.src = `src/assets/logos/${logoImage}`;
+      logoImageObject.src = `assets/logos/${logoImage}`;
       logoImageObject.onload = () => {
         setLogos((old) => [
           ...old,
           {
-            src: `src/assets/logos/${logoImage}`,
+            src: `assets/logos/${logoImage}`,
             alt: logoImage,
             width: logoImageObject.width,
             height: logoImageObject.height,

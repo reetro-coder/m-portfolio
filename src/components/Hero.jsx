@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 
 export default function Hero() {
   const [profilePicture, setProfilePicture] = useState({
-    src: "src/assets/default_pp.png",
+    src: "assets/default_pp.png",
     width: 512,
     height: 512,
   });
 
   useEffect(() => {
     let pp_image = new Image();
-    pp_image.src = "src/assets/profile.jpg";
+    pp_image.src = "assets/profile.jpg";
     pp_image.onload = () => {
       setProfilePicture({
-        src: "src/assets/profile.jpg",
+        src: "assets/profile.jpg",
         width: pp_image.width,
         height: pp_image.height,
       });
