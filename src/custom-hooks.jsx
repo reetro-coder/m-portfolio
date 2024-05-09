@@ -1,4 +1,8 @@
-import { useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
+import DataContext from "./context/DataContext";
+
+/* CONTEXT */
+const useDataContext = () => useContext(DataContext);
 
 function useObserver(ref, delay, duration) {
   useEffect(() => {
@@ -30,4 +34,27 @@ function useObserver(ref, delay, duration) {
   }, []);
 }
 
-export { useObserver };
+function useTypeWriter(text, duration) {
+  const textElements = [];
+  let delay = 0;
+  for (let i = 0; i < text.length; i++) {
+    const charRef = useRef(null);
+    useObserver(charRef, delay, duration);
+    textElements.push(
+      <span
+        key={i}
+        ref={charRef}
+        style={{
+          color: getComputedStyle(document.body).getPropertyValue("--bg"),
+        }}
+      >
+        {text[i]}
+      </span>
+    );
+    delay += duration;
+  }
+
+  return textElements;
+}
+
+export { useObserver, useTypeWriter, useDataContext };

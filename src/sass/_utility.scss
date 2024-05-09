@@ -24,9 +24,17 @@ $root-size: var(--root-size);
   text-align: center;
 }
 
+.small-fs {
+  font-size: var(--small-fs);
+}
+
+.contrast-50 {
+  filter: contrast(0.5);
+}
+
 .title {
   font-size: var(--title-fs);
-  font-weight: 200;
+  font-weight: var(--title-fw);
   letter-spacing: calc($root-size * 0.2);
   text-align: center;
 }

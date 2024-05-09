@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useDataContext } from "../custom-hooks";
 
 export default function Hero() {
+  const data = useDataContext();
   const [profilePicture, setProfilePicture] = useState({
     src: "assets/default_pp.png",
     width: 512,
@@ -19,6 +21,7 @@ export default function Hero() {
     };
   }, []);
 
+  // todo: setup buttons using context-api
   let buttons = ["Contact Me", "Resume", "Linkedin", "GitHub"];
   let buttonElements = [];
   for (let i = 0; i < buttons.length; i++) {
@@ -35,11 +38,8 @@ export default function Hero() {
         />
         <figcaption className="offscreen">Profile Photo</figcaption>
       </figure>
-      <h1 className="c-align">Experienced Front-End Developer.</h1>
-      <p className="c-align">
-        A proficient Front End Developer adept in React, sculpting captivating
-        user interfaces with precision, finesse, and a mastery of CSS.
-      </p>
+      <h1 className="c-align">{data.title}</h1>
+      <p className="c-align">{data.description}</p>
       <div className="hero__buttons">{buttonElements}</div>
     </div>
   );

@@ -5,10 +5,20 @@
 
 /* BLOCKS */
 
-.hero,
-.about {
-  @extend %fill-page;
+#root {
   padding: calc($root-size * 2);
+}
+
+#root > * {
+  max-width: var(--container-max-width-fb); /* Fall Back */
+  max-width: var(--container-max-width);
+  margin: auto;
+}
+
+.hero,
+.about,
+.experience {
+  @extend %fill-page;
 }
 
 .hero {
@@ -26,10 +36,11 @@
 }
 
 .menu {
+  z-index: 1;
   display: flex;
   padding: 4px;
   border: var(--menu-border);
-  border-radius: calc($root-size * 2);
+  border-radius: var(--menu-border-radius);
   position: sticky;
   top: 15px;
 }
@@ -45,13 +56,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.about__logos {
-  display: flex;
-  gap: $root-size;
-  flex-wrap: wrap;
-  place-content: center;
 }
 
 /* ELEMENTS */
@@ -100,11 +104,109 @@
   font-weight: 300;
 }
 
+.detailer__name {
+  padding-top: calc($root-size * 0.5);
+}
+
+.about__logos {
+  display: flex;
+  gap: $root-size;
+  flex-wrap: wrap;
+  place-content: center;
+}
+
+.about__logo,
+.experience__logo {
+  aspect-ratio: 1;
+}
+
 .about__logo {
   width: calc($root-size * 3);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  filter: contrast(0.5);
+}
+
+.experience__logo {
+  width: calc($root-size * 1.5);
+  background: var(--bg);
+
+  @include responsive("laptop") {
+    $width: calc($root-size * 3.5);
+    width: $width;
+    position: absolute;
+    inset: 0;
+    left: calc(50% - $width/2);
+    top: calc(50% - $width/2);
+    padding: calc($root-size * 0.75);
+  }
+}
+
+.experience__data {
+  display: flex;
+  flex-direction: column;
+  padding: $root-size;
+  border: var(--menu-border);
+  border-radius: 10px;
+  gap: calc($root-size * 0.5);
+
+  @include responsive("laptop") {
+    max-width: 60vw; /* Fall Back */
+    max-width: 60svw;
+  }
+}
+
+.experience__timeline {
+  font-size: var(--title-fs);
+  font-weight: var(--title-fw);
+}
+
+.experience__container {
+  $gap: calc($root-size * 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+  position: relative;
+
+  @include responsive("laptop") {
+    flex-direction: row;
+    gap: calc($gap * 10);
+    justify-content: end;
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+      justify-content: start;
+    }
+    & > * {
+      flex-basis: 50%;
+    }
+    &:nth-child(odd) > .experience__detail {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.experience__detail {
+  display: flex;
+  align-items: center;
+  gap: calc($root-size * 0.5);
+}
+
+.experience__list {
+  display: flex;
+  flex-direction: column;
+  gap: $root-size;
+  position: relative;
+}
+
+.experience__line {
+  display: none;
+  background: var(--experience__line-bg);
+
+  @include responsive("laptop") {
+    $width: 0.5px;
+    display: block;
+    position: absolute;
+    inset: 0;
+    left: calc(50% - $width/2);
+    width: $width;
+  }
 }
 
 /* MODIFIERS */

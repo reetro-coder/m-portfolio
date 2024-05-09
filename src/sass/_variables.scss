@@ -7,6 +7,7 @@
   --special-button-bg: #0064f1;
   --a-bg: #121414;
   --detailer__line-bg: linear-gradient(var(--bg), white);
+  --experience__line-bg: #818181;
 
   /* Colors */
   --heading-color: #fefefe;
@@ -16,14 +17,20 @@
 
   /* Sizes */
   --root-size: 1rem;
+  --container-max-width-fb: calc(60vw + var(--root-size) * 10);
+  /* -- Links to experience-container (MUST CHECK FOR CHANGE) -- */
+  --container-max-width: calc(60svw + var(--root-size) * 10);
 
   /* Fonts */
   --ff: "Inter", sans-serif;
   --fs: var(--root-size);
   --heading-font-weight: 900;
   --title-fs: calc(var(--root-size) * 0.7);
+  --title-fw: 200;
+  --small-fs: calc(var(--root-size) * 0.813);
 
   /* Borders */
   $border-thin: 0.7px;
   --menu-border: #{$border-thin} solid #2a2a2a;
+  --menu-border-radius: calc(var(--root-size) * 2);
 }

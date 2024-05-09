@@ -4,9 +4,8 @@ import App from "./App.jsx";
 import "./index.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    {" "}
-    {/* todo: re-enable strict mode */}
-    <App />
-  </React.StrictMode>
+  // todo: re-enable strict mode
+  // <React.StrictMode>
+  <App />
+  // </React.StrictMode>
 );

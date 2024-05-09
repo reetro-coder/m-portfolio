@@ -1,0 +1,39 @@
+{
+  "title": "Experienced Front-End Developer speacializing in ReactJS.",
+  "description": "A proficient Front End Developer adept in React, sculpting captivating user interfaces with precision, finesse, and a mastery of CSS.",
+  "about": "I'm Itachi Uchiha, a React.js virtuoso renowned for seamlessly blending React with captivating CSS animations. With a keen eye for design, I specialize in crafting seamless user experiences that push the boundaries of frontend development. From elegant transitions to stunning visual effects, I bring concepts to life, ensuring each interface I create leaves a lasting impression.",
+  "experiences": [
+    {
+      "role": "Senior React Developer",
+      "company": "apple",
+      "startDate": "Jan 2023",
+      "endDate": "Present",
+      "technologies": "React, Redux, Three.js, TypeScript, HTML5, CSS3",
+      "description": "Spearheaded the development of a new client-facing web application using React and Redux, resulting in a 30% increase in user engagement. Led a team of junior developers, conducting code reviews and providing mentorship. Implemented responsive design principles for seamless user experience across various devices. Collaborated closely with design and product teams to iterate and improve the application's features and functionality."
+    },
+    {
+      "role": "Frontend Engineer",
+      "company": "apple",
+      "startDate": "Sep 2021",
+      "endDate": "Dec 2022",
+      "technologies": "React, TypeScript, GraphQL, Material-UI, Jest, Enzyme",
+      "description": "Developed and maintained several React-based applications for a range of clients in various industries. Implemented complex user interfaces with a focus on performance and accessibility. Integrated GraphQL APIs for efficient data fetching and management. Utilized TypeScript to ensure codebase reliability and scalability. Collaborated with backend developers to design and implement RESTful APIs."
+    },
+    {
+      "role": "React Developer",
+      "company": "google",
+      "startDate": "Apr 2020",
+      "endDate": "Aug 2021",
+      "technologies": "React, Redux, Next.js, Node.js, MongoDB, AWS",
+      "description": "Contributed to the development of a large-scale e-commerce platform using React and Redux for state management. Implemented server-side rendering with Next.js to improve SEO and initial load times. Integrated with backend services built on Node.js and MongoDB, ensuring smooth data flow and synchronization. Deployed applications to AWS cloud infrastructure, optimizing for scalability and reliability."
+    },
+    {
+      "role": "Frontend Developer Intern",
+      "company": "meta",
+      "startDate": "Jun 2019",
+      "endDate": "Aug 2019",
+      "technologies": "React, HTML5, CSS3, Git",
+      "description": "Assisted in the development of a social networking application's frontend using React. Gained hands-on experience with modern frontend technologies and best practices. Collaborated with senior developers to implement UI features and resolve issues. Participated in daily stand-ups and code reviews, contributing to an agile development environment."
+    }
+  ]
+}
