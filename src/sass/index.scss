@@ -5,6 +5,10 @@
 
 /* BLOCKS */
 
+#root {
+  padding: 0 calc($root-size * 2);
+}
+
 #root > * {
   max-width: var(--container-max-width-fb); /* Fall Back */
   max-width: var(--container-max-width);
@@ -96,13 +100,15 @@
   background: var(--detailer__line-bg);
 }
 
-.detailer__num {
-  height: 100%; /* idk why tf this makes aspect ratio work */
+.detailer__blob {
+  height: 100%; /* idk wtf this makes apsect-ratio work */
   aspect-ratio: 1;
   border-radius: 50%;
-  text-align: center;
   padding: calc($root-size * 0.5);
   background: linear-gradient(135deg, white, var(--bg));
+}
+
+.detailer__num {
   color: black;
   font-weight: 300;
 }
