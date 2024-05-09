@@ -1,15 +1,14 @@
 export default function Menu() {
   return (
-    // todo: fix scroll based off of sticky pos
     <div className="menu">
-      <a className="menu__a" href="#about">
+      <a id="about-a" className="menu__a" href="#about">
         About
       </a>{" "}
       {/* todo: add references */}
-      <a className="menu__a" href="#">
-        Project
+      <a id="projects-a" className="menu__a" href="#">
+        Projects
       </a>
-      <a className="menu__a" href="#experience">
+      <a id="experience-a" className="menu__a" href="#experience">
         Experience
       </a>
     </div>

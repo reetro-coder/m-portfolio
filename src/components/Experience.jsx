@@ -1,7 +1,11 @@
-import { useDataContext } from "../custom-hooks";
+import { useRef } from "react";
+import { useDataContext, useSectionObserver } from "../custom-hooks";
 import Detailer from "./Detailer";
 
 export default function Experience() {
+  const experienceDetailerRef = useRef(null);
+  useSectionObserver(experienceDetailerRef);
+
   const experiences = useDataContext().experiences;
   const experienceElements = [];
   for (let i = 0; i < experiences.length; i++) {
@@ -37,7 +41,9 @@ export default function Experience() {
 
   return (
     <div id="experience" className="experience section">
-      <Detailer num={3} name={"Experience"} />
+      <div id="experience-detailer" ref={experienceDetailerRef}>
+        <Detailer num={3} name={"Experience"} />
+      </div>
       <div className="experience__list">
         <div className="experience__line"></div>
         {experienceElements}

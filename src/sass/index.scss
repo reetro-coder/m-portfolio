@@ -5,10 +5,6 @@
 
 /* BLOCKS */
 
-#root {
-  padding: calc($root-size * 2);
-}
-
 #root > * {
   max-width: var(--container-max-width-fb); /* Fall Back */
   max-width: var(--container-max-width);
@@ -19,6 +15,7 @@
 .about,
 .experience {
   @extend %fill-page;
+  padding: calc($root-size * 4) 0;
 }
 
 .hero {
@@ -37,6 +34,7 @@
 
 .menu {
   z-index: 1;
+  background: var(--bg);
   display: flex;
   padding: 4px;
   border: var(--menu-border);
@@ -83,9 +81,13 @@
 }
 
 .menu__a {
-  background: var(--a-bg);
   padding: calc($root-size * 0.6) calc($root-size * 1.2);
   border-radius: inherit;
+  transition: background 0.2s ease-in-out;
+
+  &:first-child {
+    background: var(--a-bg);
+  }
 }
 
 .detailer__line {
@@ -95,6 +97,7 @@
 }
 
 .detailer__num {
+  height: 100%; /* idk why tf this makes aspect ratio work */
   aspect-ratio: 1;
   border-radius: 50%;
   text-align: center;

@@ -1,8 +1,15 @@
-import { useState, useEffect } from "react";
-import { useDataContext, useTypeWriter } from "../custom-hooks";
+import { useState, useEffect, useRef } from "react";
+import {
+  useDataContext,
+  useTypeWriter,
+  useSectionObserver,
+} from "../custom-hooks";
 import Detailer from "./Detailer";
 
 export default function About() {
+  const aboutDetailerRef = useRef(null);
+  useSectionObserver(aboutDetailerRef);
+
   const about = useTypeWriter(useDataContext().about, 10);
   const [logos, setLogos] = useState([]);
 
@@ -43,7 +50,9 @@ export default function About() {
     <div id="about" className="about">
       <div className="section">
         <p className="title">EXPLORE ABOUT ME</p>
-        <Detailer num={1} name={"About"} />
+        <div id="about-detailer" ref={aboutDetailerRef}>
+          <Detailer num={1} name={"About"} />
+        </div>
         <p>{about}</p>
       </div>
       <div className="section">
