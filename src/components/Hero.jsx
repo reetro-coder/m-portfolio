@@ -1,7 +1,12 @@
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useDataContext } from "../custom-hooks";
+import { dotMoveEventHandler } from "../utils";
+
+import Dot from "./Dot";
 
 export default function Hero() {
+  const heroRef = useRef(null);
+  const dotRef = useRef(null);
   const data = useDataContext();
   const [profilePicture, setProfilePicture] = useState({
     src: "assets/default_pp.png",
@@ -28,7 +33,12 @@ export default function Hero() {
     buttonElements.push(<button key={i}>{buttons[i]}</button>);
   }
   return (
-    <div className="hero">
+    <div
+      className="hero"
+      onMouseMove={(e) => dotMoveEventHandler(e, heroRef, dotRef)}
+      ref={heroRef}
+    >
+      <Dot ref={dotRef} />
       <figure className="hero__pp">
         <img
           src={profilePicture.src}

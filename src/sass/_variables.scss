@@ -8,6 +8,10 @@
   --a-bg: #121414;
   --detailer__line-bg: linear-gradient(var(--bg), white);
   --experience__line-bg: #818181;
+  --detailer__blob-bg: linear-gradient(135deg, white, var(--bg));
+  --dot__wings-bg: white;
+  --dot__head-bg: white;
+  --bird-nose-bg: #ffc375;
 
   /* Colors */
   --heading-color: #fefefe;
@@ -20,6 +24,7 @@
   --container-max-width-fb: calc(60vw + var(--root-size) * 10);
   /* -- Links to experience-container (MUST CHECK FOR CHANGE) -- */
   --container-max-width: calc(60svw + var(--root-size) * 10);
+  --section-padding-tb: calc(var(--root-size) * 4);
 
   /* Fonts */
   --ff: "Inter", sans-serif;
@@ -33,4 +38,13 @@
   $border-thin: 0.7px;
   --menu-border: #{$border-thin} solid #2a2a2a;
   --menu-border-radius: calc(var(--root-size) * 2);
+
+  /* Animations */
+  --floating-animation: floating-animation 1s infinite linear;
+  --wings-animation-speed: 3s;
+  --bird-follow-animation-speed: 500ms;
+
+  /* Coordinates */
+  --X: 0;
+  --Y: 0;
 }

@@ -7,9 +7,6 @@
 
 #root {
   padding: 0 calc($root-size * 2);
-}
-
-#root > * {
   max-width: var(--container-max-width-fb); /* Fall Back */
   max-width: var(--container-max-width);
   margin: auto;
@@ -19,7 +16,110 @@
 .about,
 .experience {
   @extend %fill-page;
-  padding: calc($root-size * 4) 0;
+  padding: var(--section-padding-tb) 0;
+  position: relative;
+}
+
+.dot {
+  pointer-events: none;
+  $offset: 5rem;
+  position: absolute;
+  width: 5rem;
+  aspect-ratio: 2;
+  top: calc(var(--section-padding-tb) + $offset);
+  animation: dot-follow-animation-exit var(--bird-follow-animation-speed)
+      forwards,
+    var(--floating-animation);
+  z-index: 9999;
+
+  /* Bird Styling */
+  display: none;
+  grid-template-areas: "bird";
+
+  @include responsive("laptop") {
+    display: grid;
+  }
+}
+
+:is(.hero, .about, .experience):hover .dot {
+  animation: dot-follow-animation-enter var(--bird-follow-animation-speed)
+    forwards;
+}
+
+.hero > .dot {
+  align-self: flex-end;
+}
+
+@keyframes dot-follow-animation-enter {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: var(--X) var(--Y);
+  }
+}
+
+@keyframes dot-follow-animation-exit {
+  from {
+    translate: var(--X) var(--Y);
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+.dot > * {
+  grid-area: bird;
+}
+
+.dot__wings {
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 1;
+  left: 50%;
+  translate: -50%;
+  border-radius: 50%;
+  box-shadow: inset 0 5px 0 var(--dot__wings-bg);
+  z-index: -1;
+  transform-origin: 100% 0;
+  animation: wings-animation var(--wings-animation-speed) infinite linear;
+}
+
+.dot__head {
+  width: 15%;
+  aspect-ratio: 1;
+  background: var(--dot__head-bg);
+  border-radius: 50% 50% 20% 20%;
+  justify-self: center;
+  position: relative;
+}
+
+/* Bird's Nose */
+.dot__head::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+  bottom: 0;
+  width: 50%;
+  aspect-ratio: 1;
+  background: var(--bird-nose-bg);
+  border-radius: 100% 0 20% 0;
+  rotate: z 45deg;
+}
+
+/* Bird Wings Animation */
+@keyframes wings-animation {
+  50% {
+    transform: rotateX(-1440deg);
+  }
+}
+
+/* Bird Floating Animation */
+@keyframes floating-animation {
+  40% {
+    transform: rotateZ(2deg) translate(5px, 15px);
+  }
 }
 
 .hero {
@@ -96,7 +196,7 @@
 
 .detailer__line {
   height: 4rem;
-  width: 0.5px;
+  width: 1px;
   background: var(--detailer__line-bg);
 }
 
@@ -105,7 +205,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   padding: calc($root-size * 0.5);
-  background: linear-gradient(135deg, white, var(--bg));
+  background: var(--detailer__blob-bg);
 }
 
 .detailer__num {
@@ -209,7 +309,7 @@
   background: var(--experience__line-bg);
 
   @include responsive("laptop") {
-    $width: 0.5px;
+    $width: 1px;
     display: block;
     position: absolute;
     inset: 0;

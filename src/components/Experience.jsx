@@ -1,8 +1,13 @@
 import { useRef } from "react";
 import { useDataContext, useSectionObserver } from "../custom-hooks";
+import { dotMoveEventHandler } from "../utils";
+
+import Dot from "./Dot";
 import Detailer from "./Detailer";
 
 export default function Experience() {
+  const experienceRef = useRef(null);
+  const dotRef = useRef(null);
   const experienceDetailerRef = useRef(null);
   useSectionObserver(experienceDetailerRef);
 
@@ -40,7 +45,13 @@ export default function Experience() {
   }
 
   return (
-    <div id="experience" className="experience section">
+    <div
+      id="experience"
+      className="experience section"
+      ref={experienceRef}
+      onMouseMove={(e) => dotMoveEventHandler(e, experienceRef, dotRef)}
+    >
+      <Dot ref={dotRef} />
       <div id="experience-detailer" ref={experienceDetailerRef}>
         <Detailer num={3} name={"Experience"} />
       </div>

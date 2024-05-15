@@ -4,9 +4,14 @@ import {
   useTypeWriter,
   useSectionObserver,
 } from "../custom-hooks";
+import { dotMoveEventHandler } from "../utils";
+
+import Dot from "./Dot";
 import Detailer from "./Detailer";
 
 export default function About() {
+  const aboutRef = useRef(null);
+  const dotRef = useRef(null);
   const aboutDetailerRef = useRef(null);
   useSectionObserver(aboutDetailerRef);
 
@@ -47,7 +52,13 @@ export default function About() {
   }, []);
 
   return (
-    <div id="about" className="about">
+    <div
+      id="about"
+      className="about"
+      ref={aboutRef}
+      onMouseMove={(e) => dotMoveEventHandler(e, aboutRef, dotRef)}
+    >
+      <Dot ref={dotRef} />
       <div className="section">
         <p className="title">EXPLORE ABOUT ME</p>
         <div id="about-detailer" ref={aboutDetailerRef}>
