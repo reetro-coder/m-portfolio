@@ -1,10 +1,12 @@
+@use "fonts" as *;
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 :root {
+  --theme-palette: #a91d3a;
+
   /* Backgrounds */
   --bg: #000;
-  --button-bg: #fefefc;
-  --special-button-bg: #0064f1;
+  --button-bg: #fefefe;
   --a-bg: #121414;
   --detailer__line-bg: linear-gradient(var(--bg), white);
   --experience__line-bg: #818181;
@@ -17,7 +19,6 @@
   --heading-color: #fefefe;
   --primary-color: #969696;
   --button-color: #000;
-  --special-button-color: #fff;
 
   /* Sizes */
   --root-size: 1rem;
@@ -29,6 +30,7 @@
   /* Fonts */
   --ff: "Inter", sans-serif;
   --fs: var(--root-size);
+  --heading-ff: "Thunder", "Inter", sans-serif;
   --heading-font-weight: 900;
   --title-fs: calc(var(--root-size) * 0.7);
   --title-fw: 200;
@@ -40,9 +42,14 @@
   --menu-border-radius: calc(var(--root-size) * 2);
 
   /* Animations */
+  --hero-ani-duration: 0.5s;
+  --timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
   --floating-animation: floating-animation 1s infinite linear;
   --wings-animation-speed: 3s;
-  --bird-follow-animation-speed: 500ms;
+  --bird-follow-animation-speed: 0.5s;
+
+  /* Transitions */
+  --hero-transition: var(--hero-ani-duration) var(--timing-function);
 
   /* Coordinates */
   --X: 0;

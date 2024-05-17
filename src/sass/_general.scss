@@ -16,18 +16,45 @@ body {
 }
 
 h1 {
+  line-height: 1.2;
   color: var(--heading-color);
-  font-weight: var(--heading-font-weight);
+  font-family: var(--heading-ff);
 }
 
 button {
-  // todo: button animation
   font: inherit;
   background: var(--button-bg);
   color: var(--button-color);
-  border: unset;
-  border-radius: 3px;
+  border: none;
+  box-shadow: 0.5rem 0.5rem var(--bg), 0.7rem 0.7rem var(--theme-palette);
   padding: calc($root-size * 0.7) calc($root-size * 1.7);
+  transition: var(--hero-transition);
+  position: relative;
+  z-index: 1;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background: var(--theme-palette);
+  transition: var(--hero-transition);
+  z-index: -1;
+}
+
+button:hover::before,
+button:focus-within::before {
+  left: 0;
+  width: 100%;
+}
+
+button:hover,
+button:focus-within::before {
+  box-shadow: 0 0 var(--bg), 0 0 var(--theme-palette);
+  color: var(--button-bg);
 }
 
 a:any-link {

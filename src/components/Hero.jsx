@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { useDataContext } from "../custom-hooks";
 import { dotMoveEventHandler } from "../utils";
 
@@ -8,30 +8,27 @@ export default function Hero() {
   const heroRef = useRef(null);
   const dotRef = useRef(null);
   const data = useDataContext();
-  const [profilePicture, setProfilePicture] = useState({
-    src: "assets/default_pp.png",
-    width: 512,
-    height: 512,
-  });
 
-  useEffect(() => {
-    let pp_image = new Image();
-    pp_image.src = "assets/profile.jpg";
-    pp_image.onload = () => {
-      setProfilePicture({
-        src: "assets/profile.jpg",
-        width: pp_image.width,
-        height: pp_image.height,
-      });
-    };
-  }, []);
+  let titleElements = [];
+  for (let i = 0; i < data.title.length; i++) {
+    titleElements.push(
+      <span key={i} className="hero__title__char">
+        {data.title[i]}
+      </span>
+    );
+  }
 
   // todo: setup buttons using context-api
   let buttons = ["Contact Me", "Resume", "Linkedin", "GitHub"];
   let buttonElements = [];
   for (let i = 0; i < buttons.length; i++) {
-    buttonElements.push(<button key={i}>{buttons[i]}</button>);
+    buttonElements.push(
+      <button key={i} className="hero__button nowrap">
+        {buttons[i]}
+      </button>
+    );
   }
+
   return (
     <div
       className="hero"
@@ -39,17 +36,7 @@ export default function Hero() {
       ref={heroRef}
     >
       <Dot ref={dotRef} />
-      <figure className="hero__pp">
-        <img
-          src={profilePicture.src}
-          alt="profile_picture"
-          width={profilePicture.width}
-          height={profilePicture.height}
-        />
-        <figcaption className="offscreen">Profile Photo</figcaption>
-      </figure>
-      <h1 className="c-align">{data.title}</h1>
-      <p className="c-align">{data.description}</p>
+      <h1 className="hero__h1">{titleElements}</h1>
       <div className="hero__buttons">{buttonElements}</div>
     </div>
   );

@@ -2,7 +2,7 @@ $breakpoints: (
   "tablet": 481px,
   "laptop": 769px,
   "large": 1025px,
-  "extra-large": 1201px,
+  "extra-large": 1601px,
 );
 
 @mixin responsive($breakpoint) {
