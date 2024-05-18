@@ -42,5 +42,5 @@ $root-size: var(--root-size);
 .section {
   display: flex;
   flex-direction: column;
-  gap: $root-size;
+  gap: calc(2 * $root-size);
 }

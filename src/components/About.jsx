@@ -3,6 +3,7 @@ import {
   useDataContext,
   useTypeWriter,
   useSectionObserver,
+  useAboutLogosObserver,
 } from "../custom-hooks";
 import { dotMoveEventHandler } from "../utils";
 
@@ -13,7 +14,9 @@ export default function About() {
   const aboutRef = useRef(null);
   const dotRef = useRef(null);
   const aboutDetailerRef = useRef(null);
+  const aboutLogosRef = useRef(null);
   useSectionObserver(aboutDetailerRef);
+  useAboutLogosObserver(aboutLogosRef);
 
   const about = useTypeWriter(useDataContext().about, 10);
   const [logos, setLogos] = useState([]);
@@ -68,7 +71,9 @@ export default function About() {
       </div>
       <div className="section">
         <p className="title">EXPERIENCE WITH</p>
-        <div className="about__logos">{logoElements}</div>
+        <div className="about__logos" ref={aboutLogosRef}>
+          {logoElements}
+        </div>
       </div>
     </div>
   );

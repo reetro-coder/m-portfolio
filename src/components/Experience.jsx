@@ -1,5 +1,9 @@
 import { useRef } from "react";
-import { useDataContext, useSectionObserver } from "../custom-hooks";
+import {
+  useDataContext,
+  useSectionObserver,
+  useExperienceObserver,
+} from "../custom-hooks";
 import { dotMoveEventHandler } from "../utils";
 
 import Dot from "./Dot";
@@ -10,6 +14,7 @@ export default function Experience() {
   const dotRef = useRef(null);
   const experienceDetailerRef = useRef(null);
   useSectionObserver(experienceDetailerRef);
+  useExperienceObserver(experienceDetailerRef);
 
   const experiences = useDataContext().experiences;
   const experienceElements = [];

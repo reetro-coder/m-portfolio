@@ -12,7 +12,7 @@ export default function Hero() {
   let titleElements = [];
   for (let i = 0; i < data.title.length; i++) {
     titleElements.push(
-      <span key={i} className="hero__title__char">
+      <span key={i} className={data.title[i] != " " ? "hero__title__char" : ""}>
         {data.title[i]}
       </span>
     );

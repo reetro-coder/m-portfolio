@@ -1,16 +1,17 @@
 @use "fonts" as *;
+@use "mixins" as *;
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 :root {
   --theme-palette: #a91d3a;
+  --theme-gradient: linear-gradient(135deg, var(--theme-palette), var(--bg));
 
   /* Backgrounds */
   --bg: #000;
   --button-bg: #fefefe;
   --a-bg: #121414;
-  --detailer__line-bg: linear-gradient(var(--bg), white);
+  --detailer__line-bg: linear-gradient(var(--bg), var(--theme-palette));
   --experience__line-bg: #818181;
-  --detailer__blob-bg: linear-gradient(135deg, white, var(--bg));
   --dot__wings-bg: white;
   --dot__head-bg: white;
   --bird-nose-bg: #ffc375;
@@ -30,10 +31,10 @@
   /* Fonts */
   --ff: "Inter", sans-serif;
   --fs: var(--root-size);
-  --heading-ff: "Thunder", "Inter", sans-serif;
+  --heading-ff: "Thunder-Bold", "Inter", sans-serif;
   --heading-font-weight: 900;
   --title-fs: calc(var(--root-size) * 0.7);
-  --title-fw: 200;
+  --title-fw: 300;
   --small-fs: calc(var(--root-size) * 0.813);
 
   /* Borders */
@@ -54,4 +55,10 @@
   /* Coordinates */
   --X: 0;
   --Y: 0;
+
+  @include responsive("extra-large") {
+    --title-fs: calc(var(--root-size) * 1.3);
+    --fs: calc(var(--root-size) * 1.7);
+    --small-fs: var(--root-size);
+  }
 }

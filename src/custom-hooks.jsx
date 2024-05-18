@@ -25,9 +25,7 @@ function typeWriterObserverCallback(ref, duration, delay) {
   ref.current.animate(
     [
       {
-        color: getComputedStyle(document.body).getPropertyValue(
-          "--primary-color"
-        ),
+        color: "var(--primary-color)",
       },
     ],
     {
@@ -53,7 +51,7 @@ function useTypeWriter(text, duration) {
         key={i}
         ref={charRef}
         style={{
-          color: getComputedStyle(document.body).getPropertyValue("--bg"),
+          color: "var(--bg)",
         }}
       >
         {text[i]}
@@ -72,27 +70,23 @@ function useSectionObserver(ref) {
       switch (ref.current.id) {
         case "about-detailer":
           document.getElementById("about-a").style.background =
-            getComputedStyle(document.body).getPropertyValue("--a-bg");
-          document.getElementById("projects-a").style.background =
-            getComputedStyle(document.body).getPropertyValue("--bg");
+            "var(--theme-gradient)";
+          document.getElementById("projects-a").style.background = "var(--bg)";
           document.getElementById("experience-a").style.background =
-            getComputedStyle(document.body).getPropertyValue("--bg");
+            "var(--bg)";
           break;
         case "projects-detailer":
-          document.getElementById("about-a").style.background =
-            getComputedStyle(document.body).getPropertyValue("--bg");
+          document.getElementById("about-a").style.background = "var(--bg)";
           document.getElementById("projects-a").style.background =
-            getComputedStyle(document.body).getPropertyValue("--a-bg");
+            "var(--theme-gradient)";
           document.getElementById("experience-a").style.background =
-            getComputedStyle(document.body).getPropertyValue("--bg");
+            "var(--bg)";
           break;
         case "experience-detailer":
-          document.getElementById("about-a").style.background =
-            getComputedStyle(document.body).getPropertyValue("--bg");
-          document.getElementById("projects-a").style.background =
-            getComputedStyle(document.body).getPropertyValue("--bg");
+          document.getElementById("about-a").style.background = "var(--bg)";
+          document.getElementById("projects-a").style.background = "var(--bg)";
           document.getElementById("experience-a").style.background =
-            getComputedStyle(document.body).getPropertyValue("--a-bg");
+            "var(--theme-gradient)";
           break;
         default:
           return;
@@ -102,4 +96,48 @@ function useSectionObserver(ref) {
   );
 }
 
-export { useDataContext, useObserver, useTypeWriter, useSectionObserver };
+function useExperienceObserver(ref) {
+  useObserver(
+    ref,
+    () => {
+      ["even", "odd"].forEach((evenOdd) => {
+        const experienceAniElements = document.querySelectorAll(`
+          .experience__container:nth-child(${evenOdd}) .experience__data,
+          .experience__container:nth-child(${evenOdd}) .experience__timeline
+        `);
+        experienceAniElements.forEach((element) => {
+          element.style.animation = `
+            experience-ani-${evenOdd} 1s var(--timing-function) forwards
+          `;
+        });
+      });
+    },
+    { threshold: 1 },
+    true
+  );
+}
+
+function useAboutLogosObserver(ref) {
+  useObserver(
+    ref,
+    () => {
+      console.log("here");
+      const aboutLogoElements = document.querySelectorAll(".about__logo");
+      aboutLogoElements.forEach((element) => {
+        element.style.animation =
+          "about__logo-ani 0.5s var(--timing-function) forwards";
+      });
+    },
+    { threshold: 1 },
+    true
+  );
+}
+
+export {
+  useDataContext,
+  useObserver,
+  useTypeWriter,
+  useSectionObserver,
+  useExperienceObserver,
+  useAboutLogosObserver,
+};

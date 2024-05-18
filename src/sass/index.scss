@@ -259,10 +259,10 @@
 .menu__a {
   padding: calc($root-size * 0.6) calc($root-size * 1.2);
   border-radius: inherit;
-  transition: background 0.2s ease-in-out;
+  transition: background 0.5s ease-in-out;
 
   &:first-child {
-    background: var(--a-bg);
+    background: var(--theme-gradient);
   }
 }
 
@@ -277,7 +277,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   padding: calc($root-size * 0.5);
-  background: var(--detailer__blob-bg);
+  background: var(--theme-gradient);
 }
 
 .detailer__num {
@@ -287,6 +287,17 @@
 
 .detailer__name {
   padding-top: calc($root-size * 0.5);
+  position: relative;
+}
+
+.detailer__name::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--theme-gradient);
+  mix-blend-mode: darken;
 }
 
 .about__logos {
@@ -303,6 +314,23 @@
 
 .about__logo {
   width: calc($root-size * 3);
+
+  @include responsive("extra-large") {
+    width: calc($root-size * 4);
+  }
+}
+
+/* This Animation is added through Observer in About.jsx */
+@keyframes about__logo-ani {
+  from {
+    rotate: z -180deg;
+    opacity: 0;
+  }
+
+  to {
+    rotate: z 0;
+    opacity: 1;
+  }
 }
 
 .experience__logo {
@@ -317,6 +345,16 @@
     left: calc(50% - $width/2);
     top: calc(50% - $width/2);
     padding: calc($root-size * 0.75);
+  }
+
+  @include responsive("extra-large") {
+    $width: calc($root-size * 5);
+    width: $width;
+    position: absolute;
+    inset: 0;
+    left: calc(50% - $width/2);
+    top: calc(50% - $width/2);
+    padding: $root-size;
   }
 }
 
@@ -361,6 +399,10 @@
       flex-direction: row-reverse;
     }
   }
+
+  @include responsive("extra-large") {
+    gap: calc($gap * 15);
+  }
 }
 
 .experience__detail {
@@ -387,6 +429,43 @@
     inset: 0;
     left: calc(50% - $width/2);
     width: $width;
+  }
+}
+
+/* Experience Animations are added through Observer in Experience.jsx */
+@keyframes experience-ani-even {
+  0% {
+    translate: -1.5rem;
+  }
+
+  75% {
+    translate: 1rem;
+  }
+
+  85% {
+    translate: -0.25rem;
+  }
+
+  100% {
+    translate: 0;
+  }
+}
+
+@keyframes experience-ani-odd {
+  0% {
+    translate: 1.5rem;
+  }
+
+  75% {
+    translate: -1rem;
+  }
+
+  85% {
+    translate: 0.25rem;
+  }
+
+  100% {
+    translate: 0;
   }
 }
 
